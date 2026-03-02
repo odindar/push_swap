@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:17 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/02 11:27:36 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/02 11:47:40 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ typedef struct s_node
 	struct s_node	*prev;
 }	t_list;
 
+// node utils
 void	append_node(t_list **stack, int value);
 
+// operations
 void	sa(t_list **stack_a);
 void	sb(t_list **stack_b);
 void	ss(t_list **stack_a,t_list **stack_b);
@@ -37,11 +39,14 @@ void	rra(t_list **stack_a);
 void	rrb(t_list **stack_b);
 void	rrr(t_list **stack_a, t_list **stack_b);
 
+// disorder metric
 double	compute_disorder(t_list **stack);
 
+// linked list utils 
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 
+// libft utils
 int	ft_atoi(const char *str);
 #endif
