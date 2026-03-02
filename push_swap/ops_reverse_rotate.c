@@ -6,12 +6,11 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 10:58:59 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/02 11:08:37 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/02 11:11:05 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <unistd.h>
 
 static void	rrotate(t_list **stack_src)
 {
