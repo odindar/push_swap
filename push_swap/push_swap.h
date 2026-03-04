@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:17 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/02 11:47:40 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/04 15:58:26 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,18 @@ void	rrr(t_list **stack_a, t_list **stack_b);
 // disorder metric
 double	compute_disorder(t_list **stack);
 
-// linked list utils 
+// linked list utils
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 
 // libft utils
 int	ft_atoi(const char *str);
+
+//sort utils
+int	stack_len(t_list **stack);
+int	stack_min(t_list **stack);
+
+void	selection_sort(t_list **stack_a);
+
 #endif

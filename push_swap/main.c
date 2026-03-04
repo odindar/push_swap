@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:15 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/02 11:39:40 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/04 15:58:20 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,22 @@ int	main(int argc, char **args)
 	//pb(&stack_a,&stack_b);
 	//pa(&stack_a,&stack_b);
 	printf("%f\n", compute_disorder(&stack_a));
+	printf("%d\n", stack_len(&stack_a));
+	printf("%d\n", stack_min(&stack_a));
 	//rra(&stack_a);
 	//printf("%f", compute_disorder(&stack_a));
-	while (stack_a)
-	{
-		printf("%d\n", (int)stack_a->content);
-		stack_a = stack_a->next;
-	}
-	printf("b : \n");
-	while (stack_b)
-	{
-		printf("%d\n", (int)stack_b->content);
-		stack_b = stack_b->next;
-	}
+	selection_sort(&stack_a);
+	//printf("a : \n");
+	//while (stack_a)
+	//{
+	//	printf("%d\n", (int)stack_a->content);
+	//	stack_a = stack_a->next;
+	//}
+	//printf("b : \n");
+	//while (stack_b)
+	//{
+	//	printf("%d\n", (int)stack_b->content);
+	//	stack_b = stack_b->next;
+	//}
 	return (0);
 }
