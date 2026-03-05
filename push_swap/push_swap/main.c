@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:15 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/05 00:07:48 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/05 13:10:25 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int	main(int argc, char **args)
 	//rra(&stack_a);
 	//printf("%f", compute_disorder(&stack_a));
 	simple(&stack_a);
-	printf("a : \n");
-	while (stack_a)
-	{
-		printf("%d\n", (int)stack_a->content);
-		stack_a = stack_a->next;
-	}
+	//printf("a : \n");
+	//while (stack_a)
+	//{
+	//	printf("%d\n", (int)stack_a->content);
+	//	stack_a = stack_a->next;
+	//}
 	//printf("b : \n");
 	//while (stack_b)
 	//{

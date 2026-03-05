@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:17 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/05 13:02:29 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/05 13:08:36 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void	selection_sort(t_list **stack_a);
 void min_max_parse(t_list **stack_a, t_list **stack_b);
 void sort_a_to_b(t_list **stack_a, t_list **stack_b);
 void sort_b_to_a(t_list **stack_a, t_list **stack_b);
-void rotate_to_top(t_list **stack, int i);
+void rotate_to_top_a(t_list **stack_a, int i);
+void rotate_to_top_b(t_list **stack_b, int target_idx);
 
 void simple(t_list **stack_a);
 
