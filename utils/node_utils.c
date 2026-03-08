@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:35:48 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/07 22:03:36 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/08 22:14:55 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_list	*create_node(int content)
 	new_node->content = content;
 	new_node->next = NULL;
 	new_node->prev = NULL;
+	new_node->index = -1;
 	return (new_node);
 }
 
