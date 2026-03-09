@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:17 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/09 10:39:20 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/09 11:09:34 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 
 // libft utils
 int	ft_atoi(const char *str);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 //sort utils
 int	stack_len(t_list **stack);
