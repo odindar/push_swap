@@ -15,6 +15,7 @@ SRCS		= main.c \
 			  utils/node_utils.c \
 			  utils/sort_utils.c \
 			  utils/disorder.c \
+			  medium/K-sort.c \
 			  complex/radix.c
 
 OBJS		= $(SRCS:.c=.o)

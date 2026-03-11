@@ -57,7 +57,7 @@ int	main(int argc, char **args)
 	if (mode == 1)
 		selection_sort(&stack_a);
 	else if (mode == 2)
-		printf("medium\n");
+		k_sort(&stack_a);
 	else if (mode == 3)
 		radix_sort(&stack_a);
 	else if (mode == 0)
@@ -65,7 +65,7 @@ int	main(int argc, char **args)
 		if (disorder < 0.2)
 			selection_sort(&stack_a);
 		else if (disorder > 0.2 && disorder < 0.5)
-			printf("medium\n");
+			k_sort(&stack_a);
 		else if (disorder > 0.5)
 			radix_sort(&stack_a);
 	}

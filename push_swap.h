@@ -69,4 +69,9 @@ void	sort_b_to_a(t_list **stack_a, t_list **stack_b, int *cnt);
 void	rotate_to_top_a(t_list **stack_a, int i, int *cnt);
 void	rotate_to_top_b(t_list **stack_b, int target_idx, int *cnt);
 
+//medium
+void	assign_index(t_list **stack_a);
+void	k_sort_a_to_b(t_list **stack_a, t_list **stack_b, int *cnt);
+void	k_sort(t_list **stack_a);
+
 #endif
