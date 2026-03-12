@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 13:59:50 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/09 14:27:36 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/12 12:50:43 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,4 +122,26 @@ int	get_median(t_list **stack)
 	median = arr[len / 2];
 	free(arr);
 	return (median);
+}
+
+void	assign_index(t_list **stack_a)
+{
+	t_list	*num;
+	t_list	*n;
+	int		i;
+
+	num = *stack_a;
+	while (num)
+	{
+		i = 0;
+		n = *stack_a;
+		while (n)
+		{
+			if (n->content < num->content)
+				i++;
+			n = n->next;
+		}
+		num->index = i;
+		num = num->next;
+	}
 }

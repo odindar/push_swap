@@ -1,27 +1,17 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   K-sort.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/12 12:54:05 by iergin            #+#    #+#             */
+/*   Updated: 2026/03/12 12:54:13 by iergin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../push_swap.h"
 #include <stdio.h> // SİLİNECEK
-
-void	assign_index(t_list **stack_a)
-{
-	t_list	*num;
-	t_list	*n;
-	int		i;
-
-	num = *stack_a;
-	while (num)
-	{
-		i = 0;
-		n = *stack_a;
-		while (n)
-		{
-			if (n->content < num->content)
-				i++;
-			n = n->next;
-		}
-		num->index = i;
-		num = num->next;
-	}
-}
 
 void	k_sort_a_to_b(t_list **stack_a, t_list **stack_b, int *cnt)
 {
