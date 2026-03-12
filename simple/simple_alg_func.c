@@ -6,13 +6,13 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 13:18:04 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/09 14:24:40 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/12 14:24:54 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rotate_to_top_a(t_list **stack, int i, int *cnt)
+void	rotate_to_top_a(t_stack **stack, int i, int *cnt)
 {
 	int	len;
 	int	j;
@@ -37,7 +37,7 @@ void	rotate_to_top_a(t_list **stack, int i, int *cnt)
 	}
 }
 
-void	rotate_to_top_b(t_list **stack_b, int target_idx, int *cnt)
+void	rotate_to_top_b(t_stack **stack_b, int target_idx, int *cnt)
 {
 	int	len;
 	int	j;
@@ -62,7 +62,7 @@ void	rotate_to_top_b(t_list **stack_b, int target_idx, int *cnt)
 	}
 }
 
-void	min_max_parse(t_list **stack_a, t_list **stack_b, int *cnt)
+void	min_max_parse(t_stack **stack_a, t_stack **stack_b, int *cnt)
 {
 	int	median;
 	int	size;
@@ -83,7 +83,7 @@ void	min_max_parse(t_list **stack_a, t_list **stack_b, int *cnt)
 	}
 }
 
-void	sort_a_to_b(t_list **stack_a, t_list **stack_b, int *cnt)
+void	sort_a_to_b(t_stack **stack_a, t_stack **stack_b, int *cnt)
 {
 	int	min_idx;
 
@@ -95,7 +95,7 @@ void	sort_a_to_b(t_list **stack_a, t_list **stack_b, int *cnt)
 	}
 }
 
-void	sort_b_to_a(t_list **stack_a, t_list **stack_b, int *cnt)
+void	sort_b_to_a(t_stack **stack_a, t_stack **stack_b, int *cnt)
 {
 	int	max_idx;
 

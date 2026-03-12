@@ -6,13 +6,13 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:33:41 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/09 11:41:06 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/12 14:24:54 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static t_list	*ft_lstlast(t_list *lst)
+static t_stack	*ft_lstlast(t_stack *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -23,9 +23,9 @@ static t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new_node)
+void	ft_lstadd_back(t_stack **lst, t_stack *new_node)
 {
-	t_list	*last;
+	t_stack	*last;
 
 	if (!lst || !new_node)
 		return ;
@@ -38,7 +38,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new_node)
 	last->next = new_node;
 }
 
-void	ft_lstadd_front(t_list **lst, t_list *new_node)
+void	ft_lstadd_front(t_stack **lst, t_stack *new_node)
 {
 	if (!lst || !new_node)
 		return ;

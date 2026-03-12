@@ -6,15 +6,15 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 10:44:42 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/09 14:20:38 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/12 14:24:54 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	rotate(t_list **stack_src)
+static void	rotate(t_stack **stack_src)
 {
-	t_list	*tmp;
+	t_stack	*tmp;
 
 	if (!stack_src)
 		return ;
@@ -24,21 +24,21 @@ static void	rotate(t_list **stack_src)
 	ft_lstadd_back(stack_src, tmp);
 }
 
-void	ra(t_list **stack_a, int *cnt)
+void	ra(t_stack **stack_a, int *cnt)
 {
 	rotate(stack_a);
 	write(1, "ra\n", 3);
 	(*cnt)++;
 }
 
-void	rb(t_list **stack_b, int *cnt)
+void	rb(t_stack **stack_b, int *cnt)
 {
 	rotate(stack_b);
 	write(1, "rb\n", 3);
 	(*cnt)++;
 }
 
-void	rr(t_list **stack_a, t_list **stack_b, int *cnt)
+void	rr(t_stack **stack_a, t_stack **stack_b, int *cnt)
 {
 	rotate(stack_a);
 	rotate(stack_b);

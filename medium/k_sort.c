@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   K-sort.c                                           :+:      :+:    :+:   */
+/*   k_sort.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 12:54:05 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/12 12:54:13 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/12 14:24:54 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include <stdio.h> // SİLİNECEK
 
-void	k_sort_a_to_b(t_list **stack_a, t_list **stack_b, int *cnt)
+void	k_sort_a_to_b(t_stack **stack_a, t_stack **stack_b, int *cnt)
 {
 	int	i;
 	int	range;
@@ -40,9 +40,9 @@ void	k_sort_a_to_b(t_list **stack_a, t_list **stack_b, int *cnt)
 	}
 }
 
-void	k_sort(t_list **stack_a)
+void	k_sort(t_stack **stack_a)
 {
-	t_list	*stack_b;
+	t_stack	*stack_b;
 	int		cnt;
 
 	stack_b = NULL;

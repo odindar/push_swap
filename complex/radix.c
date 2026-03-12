@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 21:55:29 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/12 12:51:33 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/12 14:24:54 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static int	max_idx_bit(int x)
 }
 
 
-void	radix_sort(t_list **stack_a)
+void	radix_sort(t_stack **stack_a)
 {
 	int		max_idx;
-	t_list	*stack_b;
+	t_stack	*stack_b;
 	int		i;
 	int		cnt;
 	int		cur_stack_a_len;

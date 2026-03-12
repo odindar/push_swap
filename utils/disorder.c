@@ -6,18 +6,18 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 11:16:59 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/09 14:26:12 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/12 14:24:54 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-double	compute_disorder(t_list **stack)
+double	compute_disorder(t_stack **stack)
 {
 	double	mistakes;
 	double	total_pairs;
-	t_list	*cur;
-	t_list	*comp;
+	t_stack	*cur;
+	t_stack	*comp;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return (0.0);

@@ -6,16 +6,16 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 10:58:59 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/09 14:16:49 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/12 14:24:54 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	rrotate(t_list **stack_src)
+static void	rrotate(t_stack **stack_src)
 {
-	t_list	*last;
-	t_list	*second_to_last;
+	t_stack	*last;
+	t_stack	*second_to_last;
 
 	if (!stack_src)
 		return ;
@@ -30,21 +30,21 @@ static void	rrotate(t_list **stack_src)
 	ft_lstadd_front(stack_src, last);
 }
 
-void	rra(t_list **stack_a, int *cnt)
+void	rra(t_stack **stack_a, int *cnt)
 {
 	rrotate(stack_a);
 	write(1, "rra\n", 4);
 	(*cnt)++;
 }
 
-void	rrb(t_list **stack_b, int *cnt)
+void	rrb(t_stack **stack_b, int *cnt)
 {
 	rrotate(stack_b);
 	write(1, "rrb\n", 4);
 	(*cnt)++;
 }
 
-void	rrr(t_list **stack_a, t_list **stack_b, int *cnt)
+void	rrr(t_stack **stack_a, t_stack **stack_b, int *cnt)
 {
 	rrotate(stack_a);
 	rrotate(stack_b);

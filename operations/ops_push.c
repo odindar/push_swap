@@ -6,15 +6,15 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:29:11 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/09 14:14:23 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/12 14:24:54 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	push(t_list **stack_src, t_list **stack_dst)
+static void	push(t_stack **stack_src, t_stack **stack_dst)
 {
-	t_list	*tmp;
+	t_stack	*tmp;
 
 	if (!stack_src)
 		return ;
@@ -24,14 +24,14 @@ static void	push(t_list **stack_src, t_list **stack_dst)
 	ft_lstadd_front(stack_dst, tmp);
 }
 
-void	pa(t_list **stack_a, t_list **stack_b, int *cnt)
+void	pa(t_stack **stack_a, t_stack **stack_b, int *cnt)
 {
 	push(stack_b, stack_a);
 	write(1, "pa\n", 3);
 	(*cnt)++;
 }
 
-void	pb(t_list **stack_a, t_list **stack_b, int *cnt)
+void	pb(t_stack **stack_a, t_stack **stack_b, int *cnt)
 {
 	push(stack_a, stack_b);
 	write(1, "pb\n", 3);

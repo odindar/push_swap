@@ -6,16 +6,16 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 13:59:50 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/12 12:50:43 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/12 14:24:54 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	stack_len(t_list **stack)
+int	stack_len(t_stack **stack)
 {
 	int		len;
-	t_list	*tmp;
+	t_stack	*tmp;
 
 	len = 0;
 	tmp = *stack;
@@ -27,9 +27,9 @@ int	stack_len(t_list **stack)
 	return (len);
 }
 
-int	stack_min(t_list **stack)
+int	stack_min(t_stack **stack)
 {
-	t_list	*tmp;
+	t_stack	*tmp;
 	int		min;
 	int		i;
 	int		index;
@@ -53,9 +53,9 @@ int	stack_min(t_list **stack)
 	return (index);
 }
 
-int	stack_max(t_list **stack)
+int	stack_max(t_stack **stack)
 {
-	t_list	*tmp;
+	t_stack	*tmp;
 	int		max;
 	int		i;
 	int		index;
@@ -101,9 +101,9 @@ void	bubble_sort_array(int *arr, int len)
 	}
 }
 
-int	get_median(t_list **stack)
+int	get_median(t_stack **stack)
 {
-	t_list	*tmp;
+	t_stack	*tmp;
 	int		*arr;
 	int		len;
 	int		i;
@@ -124,10 +124,10 @@ int	get_median(t_list **stack)
 	return (median);
 }
 
-void	assign_index(t_list **stack_a)
+void	assign_index(t_stack **stack_a)
 {
-	t_list	*num;
-	t_list	*n;
+	t_stack	*num;
+	t_stack	*n;
 	int		i;
 
 	num = *stack_a;

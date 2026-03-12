@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:15 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/12 14:08:38 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/12 14:24:54 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	main(int argc, char **args)
 {
 	int		i;
-	t_list	*stack_a;
+	t_stack	*stack_a;
 	int	num;
 	int	mode;
 	double	disorder;
