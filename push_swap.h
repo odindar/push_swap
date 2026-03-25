@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:17 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/12 14:24:54 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/25 23:18:35 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,21 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct s_node
+typedef struct s_stack
 {
 	int				content;
 	int				index;
-	struct s_node	*next;
-	struct s_node	*prev;
+	int				cost_a;
+	int				cost_b;
+	int				cheapest;
+	struct s_stack	*target;
+	struct s_stack	*next;
+	struct s_stack	*prev;
 }	t_stack;
 
 // node utils
 void	append_node(t_stack **stack, int value);
+int		has_duplicate(t_stack *stack, int content);
 
 // operations
 void	sa(t_stack **stack_a, int *cnt);

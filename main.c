@@ -6,19 +6,18 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:15 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/12 14:24:54 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/25 23:24:37 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h> // bu silinecek
 
 int	main(int argc, char **args)
 {
 	int		i;
 	t_stack	*stack_a;
-	int	num;
-	int	mode;
+	int		num;
+	int		mode;
 	double	disorder;
 
 	if (argc == 1 || (argc == 2 && !args[1][0]))
@@ -26,7 +25,7 @@ int	main(int argc, char **args)
 	i = 1;
 	mode = 0;
 	stack_a = NULL;
-	while (argc > 1) {
+	if (argc > 1) {
 		if (ft_strncmp(args[1], "--simple", 9) == 0)
 		{
 			mode = 1;
@@ -47,17 +46,17 @@ int	main(int argc, char **args)
 			mode = 0;
 			i = 2;
 		}
-		break;
 	}
 	while (i < argc)
 	{
-		// burada int olup olmadığı int min int max duplicate kontrolü yapılacak
+		// int kontrolü, min max
 		num = ft_atoi(args[i]);
-		append_node(&stack_a, num);
+		if (!has_duplicate(stack_a, num))
+			append_node(&stack_a, num);
+		else
+			write(2, "Error\n", 6);
 		i++;
 	}
-	//printf("%d\n", stack_len(&stack_a));
-	//printf("%d\n", stack_min(&stack_a));
 	disorder = compute_disorder(&stack_a);
 	if (mode == 1)
 		selection_sort(&stack_a);
@@ -69,16 +68,10 @@ int	main(int argc, char **args)
 	{
 		if (disorder < 0.2)
 			selection_sort(&stack_a);
-		else if (disorder > 0.2 && disorder < 0.5)
+		else if (disorder >= 0.2 && disorder < 0.5)
 			k_sort(&stack_a);
-		else if (disorder > 0.5)
+		else if (disorder >= 0.5)
 			radix_sort(&stack_a);
 	}
-	//printf("a : \n");
-	//while (stack_a)
-	//{
-	//	printf("%d\n", (int)stack_a->content);
-	//	stack_a = stack_a->next;
-	//}
 	return (0);
 }
