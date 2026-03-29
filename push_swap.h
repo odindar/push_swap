@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:17 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/25 23:18:35 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/29 16:29:55 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_stack
 
 // node utils
 void	append_node(t_stack **stack, int value);
-int		has_duplicate(t_stack *stack, int content);
+int		has_available(t_stack *stack, int content);
 
 // operations
 void	sa(t_stack **stack_a, int *cnt);
@@ -51,10 +51,10 @@ double	compute_disorder(t_stack **stack);
 // linked list utils
 void	ft_lstadd_back(t_stack **lst, t_stack *new_node);
 void	ft_lstadd_front(t_stack **lst, t_stack *new_node);
-void	ft_lstdelone(t_stack *lst, void (*del)(void *));
+void	ft_lstclear(t_stack **lst, void (*del)(void *));
 
 // libft utils
-int		ft_atoi(const char *str);
+int		simple_atoi(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 //sort utils
@@ -76,7 +76,6 @@ void	rotate_to_top_a(t_stack **stack_a, int i, int *cnt);
 void	rotate_to_top_b(t_stack **stack_b, int target_idx, int *cnt);
 
 //medium
-void	assign_index(t_stack **stack_a);
 void	k_sort_a_to_b(t_stack **stack_a, t_stack **stack_b, int *cnt);
 void	k_sort(t_stack **stack_a);
 

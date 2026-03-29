@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:35:48 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/25 23:23:11 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/29 15:59:08 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,15 @@ void	append_node(t_stack **stack, int content)
 	new_node->prev = last;
 }
 
-int	has_duplicate(t_stack *stack, int content)
+int	has_available(t_stack *stack, int content)
 {
 	t_stack	*tmp;
 
-	if (!stack)
-		return (0);
 	tmp = stack;
 	while (tmp != NULL) {
 		if (tmp->content == content)
-			return 1;
+			return (0);
 		tmp = tmp->next;
 	}
-	return 0;
+	return (1);
 }
