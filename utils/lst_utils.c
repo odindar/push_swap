@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:33:41 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/29 16:31:49 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/30 11:24:51 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ void	ft_lstadd_front(t_stack **lst, t_stack *new_node)
 	*lst = new_node;
 }
 
-void	ft_lstclear(t_stack **lst, void (*del)(void *))
+void	ft_lstclear(t_stack **lst)
 {
 	t_stack	*l;
 
-	if (!lst || !del)
+	if (!lst)
 		return ;
 	while (*lst)
 	{

@@ -6,18 +6,59 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:15 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/29 17:06:04 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/30 11:26:25 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#include <stdio.h> // SİL
+static void select_mode(char *arg, int *mode, int *i)
+{
+		if (ft_strncmp(arg, "--simple", 9) == 0)
+		{
+			*mode = 1;
+			*i = 2;
+		}
+		else if (ft_strncmp(arg, "--medium", 9) == 0)
+		{
+			*mode = 2;
+			*i = 2;
+		}
+		else if (ft_strncmp(arg, "--complex", 10) == 0)
+		{
+			*mode = 3;
+			*i = 2;
+		}
+		else if (ft_strncmp(arg, "--adaptive", 11) == 0)
+		{
+			*mode = 0;
+			*i = 2;
+		}
+}
+
+static void select_sort(t_stack *stack_a, int *mode, int disorder)
+{
+	if (*mode == 1)
+		selection_sort(&stack_a);
+	else if (*mode == 2)
+		k_sort(&stack_a);
+	else if (*mode == 3)
+		radix_sort(&stack_a);
+	else if (*mode == 0)
+	{
+		if (disorder != 0 && disorder < 0.2)
+			selection_sort(&stack_a);
+		else if (disorder >= 0.2 && disorder < 0.5)
+			k_sort(&stack_a);
+		else if (disorder >= 0.5)
+			radix_sort(&stack_a);
+	}
+}
 
 int	main(int argc, char **args)
 {
-	int		i;
 	t_stack	*stack_a;
+	int		i;
 	int		num;
 	int		mode;
 	double	disorder;
@@ -27,28 +68,8 @@ int	main(int argc, char **args)
 	i = 1;
 	mode = 0;
 	stack_a = NULL;
-	if (argc > 1) {
-		if (ft_strncmp(args[1], "--simple", 9) == 0)
-		{
-			mode = 1;
-			i = 2;
-		}
-		else if (ft_strncmp(args[1], "--medium", 9) == 0)
-		{
-			mode = 2;
-			i = 2;
-		}
-		else if (ft_strncmp(args[1], "--complex", 10) == 0)
-		{
-			mode = 3;
-			i = 2;
-		}
-		else if (ft_strncmp(args[1], "--adaptive", 11) == 0)
-		{
-			mode = 0;
-			i = 2;
-		}
-	}
+	if (argc > 1)
+		select_mode(args[1], &mode, &i);
 	while (i < argc)
 	{
 		num = simple_atoi(args[i]);
@@ -57,27 +78,13 @@ int	main(int argc, char **args)
 		else
 		{
 			write(2, "Error\n", 6);
-			ft_lstclear(&stack_a, free);
+			ft_lstclear(&stack_a);
 			return (0);
 		}
 		i++;
 	}
 	disorder = compute_disorder(&stack_a);
-	if (mode == 1)
-		selection_sort(&stack_a);
-	else if (mode == 2)
-		k_sort(&stack_a);
-	else if (mode == 3)
-		radix_sort(&stack_a);
-	else if (mode == 0)
-	{
-		if (disorder != 0 && disorder < 0.2)
-			selection_sort(&stack_a);
-		else if (disorder >= 0.2 && disorder < 0.5)
-			k_sort(&stack_a);
-		else if (disorder >= 0.5)
-			radix_sort(&stack_a);
-	}
-	ft_lstclear(&stack_a, free);
+	select_sort(stack_a ,&mode, disorder);
+	ft_lstclear(&stack_a);
 	return (0);
 }

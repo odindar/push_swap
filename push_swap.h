@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:17 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/29 16:29:55 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/30 11:25:02 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ double	compute_disorder(t_stack **stack);
 // linked list utils
 void	ft_lstadd_back(t_stack **lst, t_stack *new_node);
 void	ft_lstadd_front(t_stack **lst, t_stack *new_node);
-void	ft_lstclear(t_stack **lst, void (*del)(void *));
+void	ft_lstclear(t_stack **lst);
 
 // libft utils
 int		simple_atoi(const char *str);
