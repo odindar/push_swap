@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:35:48 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/29 15:59:08 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/30 11:40:34 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,28 @@ t_stack	*create_node(int content)
 	return (new_node);
 }
 
-void	append_node(t_stack **stack, int content)
+int	append_node(t_stack **stack, int content)
 {
 	t_stack	*new_node;
 	t_stack	*last;
 
 	new_node = create_node(content);
 	if (!new_node)
-		return ;// Gerçek projede burada belleği temizleyip (free) çıkmalısın.
+	{
+		ft_lstclear(stack);
+		return (0);
+	}
 	if (*stack == NULL)
 	{
 		*stack = new_node;
-		return ;
+		return (1);
 	}
 	last = *stack;
 	while (last->next != NULL)
 		last = last->next;
 	last->next = new_node;
 	new_node->prev = last;
+	return (1);
 }
 
 int	has_available(t_stack *stack, int content)
@@ -51,7 +55,8 @@ int	has_available(t_stack *stack, int content)
 	t_stack	*tmp;
 
 	tmp = stack;
-	while (tmp != NULL) {
+	while (tmp != NULL)
+	{
 		if (tmp->content == content)
 			return (0);
 		tmp = tmp->next;

@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:33:41 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/30 11:24:51 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/30 11:34:50 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,3 @@ void	ft_lstclear(t_stack **lst)
 	}
 	*lst = NULL;
 }
-

@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:15 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/30 11:34:00 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/30 11:50:35 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	select_mode(char *arg, int *mode, int *i)
 	}
 }
 
-static void	select_sort(t_stack *stack_a, int *mode, int disorder)
+static void	select_sort(t_stack *stack_a, int *mode, double disorder)
 {
 	if (*mode == 1)
 		selection_sort(&stack_a);
@@ -62,9 +62,8 @@ static int	fill_stack(t_stack **stack_a, int argc, char **args, int i)
 	while (i < argc)
 	{
 		num = simple_atoi(args[i]);
-		if (has_available(*stack_a, num) && num != -1)
-			append_node(stack_a, num);
-		else
+		if (!(has_available(*stack_a, num) && num != -1
+				&& append_node(stack_a, num)))
 		{
 			write(2, "Error\n", 6);
 			ft_lstclear(stack_a);
