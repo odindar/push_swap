@@ -6,37 +6,37 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:15 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/30 11:31:17 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/30 11:34:00 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void select_mode(char *arg, int *mode, int *i)
+static void	select_mode(char *arg, int *mode, int *i)
 {
-		if (ft_strncmp(arg, "--simple", 9) == 0)
-		{
-			*mode = 1;
-			*i = 2;
-		}
-		else if (ft_strncmp(arg, "--medium", 9) == 0)
-		{
-			*mode = 2;
-			*i = 2;
-		}
-		else if (ft_strncmp(arg, "--complex", 10) == 0)
-		{
-			*mode = 3;
-			*i = 2;
-		}
-		else if (ft_strncmp(arg, "--adaptive", 11) == 0)
-		{
-			*mode = 0;
-			*i = 2;
-		}
+	if (ft_strncmp(arg, "--simple", 9) == 0)
+	{
+		*mode = 1;
+		*i = 2;
+	}
+	else if (ft_strncmp(arg, "--medium", 9) == 0)
+	{
+		*mode = 2;
+		*i = 2;
+	}
+	else if (ft_strncmp(arg, "--complex", 10) == 0)
+	{
+		*mode = 3;
+		*i = 2;
+	}
+	else if (ft_strncmp(arg, "--adaptive", 11) == 0)
+	{
+		*mode = 0;
+		*i = 2;
+	}
 }
 
-static void select_sort(t_stack *stack_a, int *mode, int disorder)
+static void	select_sort(t_stack *stack_a, int *mode, int disorder)
 {
 	if (*mode == 1)
 		selection_sort(&stack_a);
@@ -55,9 +55,9 @@ static void select_sort(t_stack *stack_a, int *mode, int disorder)
 	}
 }
 
-static int fill_stack(t_stack **stack_a, int argc, char **args, int i)
+static int	fill_stack(t_stack **stack_a, int argc, char **args, int i)
 {
-	int num;
+	int	num;
 
 	while (i < argc)
 	{
@@ -91,7 +91,7 @@ int	main(int argc, char **args)
 		select_mode(args[1], &mode, &i);
 	fill_stack(&stack_a, argc, args, i);
 	disorder = compute_disorder(&stack_a);
-	select_sort(stack_a ,&mode, disorder);
+	select_sort(stack_a, &mode, disorder);
 	ft_lstclear(&stack_a);
 	return (0);
 }
