@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:15 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/30 11:26:25 by iergin           ###   ########.fr       */
+/*   Updated: 2026/03/30 11:31:17 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,30 @@ static void select_sort(t_stack *stack_a, int *mode, int disorder)
 	}
 }
 
+static int fill_stack(t_stack **stack_a, int argc, char **args, int i)
+{
+	int num;
+
+	while (i < argc)
+	{
+		num = simple_atoi(args[i]);
+		if (has_available(*stack_a, num) && num != -1)
+			append_node(stack_a, num);
+		else
+		{
+			write(2, "Error\n", 6);
+			ft_lstclear(stack_a);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
 int	main(int argc, char **args)
 {
 	t_stack	*stack_a;
 	int		i;
-	int		num;
 	int		mode;
 	double	disorder;
 
@@ -70,19 +89,7 @@ int	main(int argc, char **args)
 	stack_a = NULL;
 	if (argc > 1)
 		select_mode(args[1], &mode, &i);
-	while (i < argc)
-	{
-		num = simple_atoi(args[i]);
-		if (has_available(stack_a, num) && num != -1)
-			append_node(&stack_a, num);
-		else
-		{
-			write(2, "Error\n", 6);
-			ft_lstclear(&stack_a);
-			return (0);
-		}
-		i++;
-	}
+	fill_stack(&stack_a, argc, args, i);
 	disorder = compute_disorder(&stack_a);
 	select_sort(stack_a ,&mode, disorder);
 	ft_lstclear(&stack_a);
