@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:17 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/30 11:40:17 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/12 15:03:31 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_stack
 }	t_stack;
 
 // node utils
-int	append_node(t_stack **stack, int value);
+int		append_node(t_stack **stack, int value);
 int		has_available(t_stack *stack, int content);
 
 // operations

@@ -10,6 +10,7 @@ SRCS		= main.c \
 			  operations/ops_swap.c \
 			  simple/simple_alg.c \
 			  simple/simple_alg_func.c \
+			  simple/simple_alg_helper.c \
 			  utils/libft_utils.c \
 			  utils/lst_utils.c \
 			  utils/node_utils.c \

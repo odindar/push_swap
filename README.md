@@ -7,9 +7,9 @@ _This activity has been created as part of the 42 curriculum by iergin, odindar_
 **Push_Swap** is a sorting algorithm project that sorts random integers using two stacks (a and b) with predefined operations while minimizing the number of moves.
 
 The project implements four sorting strategies:
-- **Simple Algorithm** (O(n²)): For small datasets (n < 50)
-- **Medium Algorithm** (O(n√n)): For medium datasets (50 ≤ n ≤ 500)
-- **Complex Algorithm** (O(n log n)): For large datasets (n > 500)
+- **Simple Algorithm** (O(n²)): For small datasets (disorder < 0.2 )
+- **Medium Algorithm** (O(n√n)): For medium datasets (0.2 ≤ disorder ≤ 0.5)
+- **Complex Algorithm** (O(n log n)): For large datasets (0.5 > disorder)
 - **Adaptive Algorithm**: Automatically selects the best algorithm based on input disorder
 
 ---
