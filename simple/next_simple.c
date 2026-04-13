@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ex_simple.c                                        :+:      :+:    :+:   */
+/*   next_simple.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 17:52:57 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/12 17:52:57 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/13 16:26:27 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "../push_swap.h"
 
-static	void	move_min_to_top(t_stack **stack_a, int min_idx, int len, int *count)
+static	void	move_min_to_top(t_stack **stack_a, int len, int *cnt)
 {	
 	int		j;
+	int		min;
 
-	if (len / 2 < min_idx)
+	min = stack_min(stack_a);
+	if (len / 2 < min)
 	{
-		j = len - min_idx;
+		j = len - min;
 		while (j > 0)
 		{
-			rra(stack_a, count);
+			rra(stack_a, cnt);
 			j--;
 		}
 	}
 	else
 	{
-		j = min_idx;
+		j = min;
 		while (j > 0)
 		{
-			ra(stack_a, count);
+			ra(stack_a, cnt);
 			j--;
 		}
 	}
@@ -54,26 +56,26 @@ void	selection_sort(t_stack **stack_a)
 {
 	t_stack	*stack_b;
 	int		i;
-	int		count;
+	int		cnt;
 
 	stack_b = NULL;
-	count = 0;
+	cnt = 0;
 	i = stack_len(stack_a);
 	while (i > 2)
 	{
 		if (is_sorted(*stack_a))
 			break ;
-		move_min_to_top(stack_a, stack_min(stack_a), i, &count);
-		pb(stack_a, &stack_b, &count);
+		move_min_to_top(stack_a, i, &cnt);
+		pb(stack_a, &stack_b, &cnt);
 		i--;
 	}
 	if ((*stack_a)->content > (*stack_a)->next->content)
-		sa(stack_a, &count);
+		sa(stack_a, &cnt);
 	i = stack_len(&stack_b);
 	while (i > 0)
 	{
-		pa(stack_a, &stack_b, &count);
+		pa(stack_a, &stack_b, &cnt);
 		i--;
 	}
-	printf("İşlem sayısı : %d\n", count);
+	printf("İşlem sayısı : %d\n", cnt);
 }

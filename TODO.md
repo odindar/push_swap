@@ -1,4 +1,4 @@
 - 3 ve 5 sayı için optimizasyon.
 - bench eklenecek
 - printf içni stdio.h'dan kurtulcaz.
-- radix için "Generally, --complex should use fewer instructions than --simple" şartı sağlanacak. (radixteki bit mantığındansa normal sayıların basamağına göre bakılabilir)
+- radix için "Generally, --complex should use fewer instructions than --simple" şartı sağlanacak.
