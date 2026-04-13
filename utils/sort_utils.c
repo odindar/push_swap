@@ -48,3 +48,55 @@ void	assign_index(t_stack **stack_a)
 		num = num->next;
 	}
 }
+
+int	stack_max(t_stack **stack)
+{
+	t_stack	*tmp;
+	int		max;
+	int		i;
+	int		index;
+
+	if (!(*stack))
+		return (0);
+	tmp = *stack;
+	max = tmp->content;
+	i = 0;
+	index = 0;
+	while (tmp != NULL)
+	{
+		if (tmp->content > max)
+		{
+			max = tmp->content;
+			index = i;
+		}
+		tmp = tmp->next;
+		i++;
+	}
+	return (index);
+}
+
+int	stack_min(t_stack **stack)
+{
+	t_stack	*tmp;
+	int		min;
+	int		i;
+	int		index;
+
+	if (!(*stack))
+		return (0);
+	tmp = *stack;
+	min = tmp->content;
+	i = 0;
+	index = 0;
+	while (tmp != NULL)
+	{
+		if (tmp->content < min)
+		{
+			min = tmp->content;
+			index = i;
+		}
+		tmp = tmp->next;
+		i++;
+	}
+	return (index);
+}

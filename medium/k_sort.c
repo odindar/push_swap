@@ -13,7 +13,7 @@
 #include "../push_swap.h"
 #include <stdio.h> // SİLİNECEK
 
-void	k_sort_a_to_b(t_stack **stack_a, t_stack **stack_b, int *cnt)
+static	void	k_sort_a_to_b(t_stack **stack_a, t_stack **stack_b, int *cnt)
 {
 	int	i;
 	int	range;
@@ -37,6 +37,43 @@ void	k_sort_a_to_b(t_stack **stack_a, t_stack **stack_b, int *cnt)
 		}
 		else
 			ra(stack_a, cnt);
+	}
+}
+
+static	void	rotate_to_top_b(t_stack **stack_b, int target_idx, int *cnt)
+{
+	int	len;
+	int	j;
+
+	len = stack_len(stack_b);
+	if (target_idx <= len / 2)
+	{
+		while (target_idx > 0)
+		{
+			rb(stack_b, cnt);
+			target_idx--;
+		}
+	}
+	else
+	{
+		j = len - target_idx;
+		while (j > 0)
+		{
+			rrb(stack_b, cnt);
+			j--;
+		}
+	}
+}
+
+static	void	sort_b_to_a(t_stack **stack_a, t_stack **stack_b, int *cnt)
+{
+	int	max_idx;
+
+	while (stack_len(stack_b) > 0)
+	{
+		max_idx = stack_max(stack_b);
+		rotate_to_top_b(stack_b, max_idx, cnt);
+		pa(stack_a, stack_b, cnt);
 	}
 }
 
