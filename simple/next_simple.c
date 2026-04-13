@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 17:52:57 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/13 16:26:27 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/13 16:28:38 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../push_swap.h"
 
 static	void	move_min_to_top(t_stack **stack_a, int len, int *cnt)
-{	
+{
 	int		j;
 	int		min;
 
