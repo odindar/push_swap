@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:17 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/12 15:03:31 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/17 16:52:23 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,41 @@ typedef struct s_stack
 {
 	int				content;
 	int				index;
-	int				cost_a;
-	int				cost_b;
-	int				cheapest;
-	struct s_stack	*target;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
 
+typedef struct s_bench
+{
+	int				sa;
+	int				sb;
+	int				ss;
+	int				pa;
+	int				pb;
+	int				ra;
+	int				rb;
+	int				rr;
+	int				rra;
+	int				rrb;
+	int				rrr;
+	int				total_ops;
+}	t_bench;
 // node utils
 int		append_node(t_stack **stack, int value);
 int		has_available(t_stack *stack, int content);
 
 // operations
-void	sa(t_stack **stack_a, int *cnt);
-void	sb(t_stack **stack_b, int *cnt);
-void	ss(t_stack **stack_a, t_stack **stack_b, int *cnt);
-void	pa(t_stack **stack_a, t_stack **stack_b, int *cnt);
-void	pb(t_stack **stack_a, t_stack **stack_b, int *cnt);
-void	ra(t_stack **stack_a, int *cnt);
-void	rb(t_stack **stack_b, int *cnt);
-void	rr(t_stack **stack_a, t_stack **stack_b, int *cnt);
-void	rra(t_stack **stack_a, int *cnt);
-void	rrb(t_stack **stack_b, int *cnt);
-void	rrr(t_stack **stack_a, t_stack **stack_b, int *cnt);
+void	sa(t_stack **stack_a, t_bench *bench);
+void	sb(t_stack **stack_b, t_bench *bench);
+void	ss(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
+void	pa(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
+void	pb(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
+void	ra(t_stack **stack_a, t_bench *bench);
+void	rb(t_stack **stack_b, t_bench *bench);
+void	rr(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
+void	rra(t_stack **stack_a, t_bench *bench);
+void	rrb(t_stack **stack_b, t_bench *bench);
+void	rrr(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
 
 // disorder metric
 double	compute_disorder(t_stack **stack);
@@ -56,6 +67,8 @@ void	ft_lstclear(t_stack **lst);
 // libft utils
 int		simple_atoi(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void	*ft_bzero(void *s, size_t n);
+
 
 //sort utils
 int		stack_len(t_stack **stack);
@@ -65,13 +78,9 @@ void	bubble_sort_array(int *arr, int len);
 int		get_median(t_stack **stack);
 void	assign_index(t_stack **stack_a);
 
-void	selection_sort(t_stack **stack_a);
-void	radix_sort(t_stack **stack_a);
-
-//simple
-void	selection_sort(t_stack **stack_a);
-
-//medium
-void	k_sort(t_stack **stack_a);
+// sorts
+void	selection_sort(t_stack **stack_a, t_bench *bench);
+void	k_sort(t_stack **stack_a, t_bench *bench);
+void	radix_sort(t_stack **stack_a, t_bench *bench);
 
 #endif

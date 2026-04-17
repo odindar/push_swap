@@ -6,14 +6,13 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 17:52:57 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/13 16:28:38 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/17 16:44:58 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../push_swap.h"
 
-static	void	move_min_to_top(t_stack **stack_a, int len, int *cnt)
+static	void	move_min_to_top(t_stack **stack_a, int len, t_bench *bench)
 {
 	int		j;
 	int		min;
@@ -24,7 +23,7 @@ static	void	move_min_to_top(t_stack **stack_a, int len, int *cnt)
 		j = len - min;
 		while (j > 0)
 		{
-			rra(stack_a, cnt);
+			rra(stack_a, bench);
 			j--;
 		}
 	}
@@ -33,7 +32,7 @@ static	void	move_min_to_top(t_stack **stack_a, int len, int *cnt)
 		j = min;
 		while (j > 0)
 		{
-			ra(stack_a, cnt);
+			ra(stack_a, bench);
 			j--;
 		}
 	}
@@ -52,30 +51,27 @@ static	int	is_sorted(t_stack *stack_a)
 	return (1);
 }
 
-void	selection_sort(t_stack **stack_a)
+void	selection_sort(t_stack **stack_a, t_bench *bench)
 {
 	t_stack	*stack_b;
 	int		i;
-	int		cnt;
 
 	stack_b = NULL;
-	cnt = 0;
 	i = stack_len(stack_a);
 	while (i > 2)
 	{
 		if (is_sorted(*stack_a))
 			break ;
-		move_min_to_top(stack_a, i, &cnt);
-		pb(stack_a, &stack_b, &cnt);
+		move_min_to_top(stack_a, i, bench);
+		pb(stack_a, &stack_b, bench);
 		i--;
 	}
 	if ((*stack_a)->content > (*stack_a)->next->content)
-		sa(stack_a, &cnt);
+		sa(stack_a, bench);
 	i = stack_len(&stack_b);
 	while (i > 0)
 	{
-		pa(stack_a, &stack_b, &cnt);
+		pa(stack_a, &stack_b, bench);
 		i--;
 	}
-	printf("İşlem sayısı : %d\n", cnt);
 }

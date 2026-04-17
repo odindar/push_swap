@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:46:36 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/29 16:11:29 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/17 16:51:53 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,19 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	}
 	return (0);
+}
+
+
+void	*ft_bzero(void *s, size_t n)
+{
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)s;
+	while (n > 0)
+	{
+		*ptr = 0;
+		ptr++;
+		n--;
+	}
+	return (s);
 }

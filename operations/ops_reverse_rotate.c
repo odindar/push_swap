@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 10:58:59 by iergin            #+#    #+#             */
-/*   Updated: 2026/03/12 14:24:54 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/17 17:02:10 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,36 @@ static void	rrotate(t_stack **stack_src)
 	ft_lstadd_front(stack_src, last);
 }
 
-void	rra(t_stack **stack_a, int *cnt)
+void	rra(t_stack **stack_a, t_bench *bench)
 {
 	rrotate(stack_a);
 	write(1, "rra\n", 4);
-	(*cnt)++;
+	if(bench != NULL)
+	{
+		bench->rra++;
+		bench->total_ops++;
+	}
 }
 
-void	rrb(t_stack **stack_b, int *cnt)
+void	rrb(t_stack **stack_b, t_bench *bench)
 {
 	rrotate(stack_b);
 	write(1, "rrb\n", 4);
-	(*cnt)++;
+	if(bench != NULL)
+	{	
+		bench->rrb++;
+		bench->total_ops++;
+	}
 }
 
-void	rrr(t_stack **stack_a, t_stack **stack_b, int *cnt)
+void	rrr(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
 	rrotate(stack_a);
 	rrotate(stack_b);
 	write(1, "rrr\n", 4);
-	(*cnt)++;
+	if(bench != NULL)
+	{
+		bench->rrr++;
+		bench->total_ops++;
+	}
 }

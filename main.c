@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:15 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/16 13:09:26 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/17 16:58:48 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,25 @@ static void	select_mode(char **args, int *mode, int *i)
 	}
 }
 
-static void	select_sort(t_stack **stack_a, int *mode, double disorder)
+static void	select_sort(t_stack **stack_a, int *mode, double disorder, t_bench *bench)
 {
+	int	len;
+
+	len = stack_len(stack_a);
 	if (*mode % 10 == 1)
-		selection_sort(stack_a);
+		selection_sort(stack_a, bench);
 	else if (*mode % 10 == 2)
-		k_sort(stack_a);
+		k_sort(stack_a, bench);
 	else if (*mode % 10 == 3)
-		radix_sort(stack_a);
+		radix_sort(stack_a, bench);
 	else if (*mode % 10 == 0)
 	{
-		if (disorder != 0 && disorder < 0.2)
-			selection_sort(stack_a);
+		if ((disorder != 0 && disorder < 0.2) || (len <= 5))
+			selection_sort(stack_a, bench);
 		else if (disorder >= 0.2 && disorder < 0.5)
-			k_sort(stack_a);
+			k_sort(stack_a, bench);
 		else if (disorder >= 0.5)
-			radix_sort(stack_a);
+			radix_sort(stack_a, bench);
 	}
 }
 
@@ -69,7 +72,7 @@ static int	fill_stack(t_stack **stack_a, int argc, char **args, int i)
 	return (1);
 }
 
-static void	print_strategy(int mode, double disorder)
+static void	print_strategy(int mode, double disorder, int len)
 {
 	if (mode % 10 == 1)
 		printf("[bench] strategy: Simple / O(n^2)\n");
@@ -79,7 +82,7 @@ static void	print_strategy(int mode, double disorder)
 		printf("[bench] strategy: Complex / O(n log n)\n");
 	else if (mode % 10 == 0)
 	{
-		if (disorder < 0.2)
+		if (disorder < 0.2 || len <= 5)
 			printf("[bench] strategy: Adaptive / O(n^2)\n");
 		else if (disorder >= 0.2 && disorder < 0.5)
 			printf("[bench] strategy: Adaptive / O(n√n)\n");
@@ -88,21 +91,22 @@ static void	print_strategy(int mode, double disorder)
 	}
 }
 
-static void	benchmark(int mode, double disorder)
+static void	benchmark(int mode, double disorder, int len, t_bench *bench)
 {
-	int	total_ops;
-
-	total_ops = 0;
 	printf("[bench] disorder: %.2f%%\n", disorder * 100);
-	print_strategy(mode, disorder);
-	printf("[bench] total_ops: %d\n", total_ops);
-	printf("[bench] sa: 0 sb: 0 ss: 0 pa: 0 pb: 0\n");
-	printf("[bench] ra: 0 rb: 0 rr: 0 rra: 0 rrb: 0 rrr: 0\n");
+	print_strategy(mode, disorder, len);
+	printf("[bench] total_ops: %d\n", bench->total_ops);
+	printf("[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n", 
+		bench->sa, bench->sb, bench->ss, bench->pa, bench->pb);
+	printf("[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n",
+		bench->ra, bench->rb, bench->rr, bench->rra, bench->rrb, bench->rrr);
 }
 
 int	main(int argc, char **args)
 {
 	t_stack	*stack_a;
+	t_bench	*bench;
+	t_bench	tbench;
 	int		i;
 	int		mode;
 	double	disorder;
@@ -110,6 +114,7 @@ int	main(int argc, char **args)
 
 	if (argc == 1 || (argc == 2 && !args[1][0]))
 		return (0);
+	ft_bzero(&tbench, sizeof(t_bench));
 	i = 1;
 	mode = 0;
 	stack_a = NULL;
@@ -118,9 +123,13 @@ int	main(int argc, char **args)
 	disorder = compute_disorder(&stack_a);
 	if (err)
 	{
-		select_sort(&stack_a, &mode, disorder);
 		if (mode >= 10)
-			benchmark(mode, disorder);
+			bench = &tbench;
+		else
+			bench = NULL;
+		select_sort(&stack_a, &mode, disorder, bench);
+		if (mode >= 10)
+			benchmark(mode, disorder, stack_len(&stack_a), bench);
 	}
 	ft_lstclear(&stack_a);
 	return (0);
