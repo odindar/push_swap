@@ -1,2 +1,1 @@
-- bench eklenecek
 - printf içni stdio.h'dan kurtulcaz.
