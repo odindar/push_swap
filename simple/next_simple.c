@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 17:52:57 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/18 15:26:45 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/18 21:25:31 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	selection_sort(t_stack **stack_a, t_bench *b)
 	t_stack	*stack_b;
 	int		i;
 
+	if (!stack_a || !*stack_a || !(*stack_a)->next)
+		return ;
 	stack_b = NULL;
 	i = stack_len(stack_a);
 	while (i > 2)

@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 12:54:05 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/18 16:18:33 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/18 21:27:46 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ void	k_sort(t_stack **stack_a, t_bench *b)
 	t_stack	*stack_b;
 
 	stack_b = NULL;
+	if (!stack_a || !*stack_a || !(*stack_a)->next)
+		return ;
 	assign_index(stack_a);
 	k_sort_a_to_b(stack_a, &stack_b, b);
 	sort_b_to_a(stack_a, &stack_b, b);
