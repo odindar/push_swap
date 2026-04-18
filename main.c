@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:15 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/17 17:30:05 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/18 16:17:01 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,25 @@ static void	select_mode(char **args, int *mode, int *i)
 	}
 }
 
-static void	select_sort(t_stack **stack_a, int *mode, double disorder, t_bench *bench)
+static void	select_sort(t_stack **stack_a, int *mode, double dorder, t_bench *b)
 {
 	int	len;
 
 	len = stack_len(stack_a);
 	if (*mode % 10 == 1)
-		selection_sort(stack_a, bench);
+		selection_sort(stack_a, b);
 	else if (*mode % 10 == 2)
-		k_sort(stack_a, bench);
+		k_sort(stack_a, b);
 	else if (*mode % 10 == 3)
-		radix_sort(stack_a, bench);
+		radix_sort(stack_a, b);
 	else if (*mode % 10 == 0)
 	{
-		if ((disorder != 0 && disorder < 0.2) || (len <= 5))
-			selection_sort(stack_a, bench);
-		else if (disorder >= 0.2 && disorder < 0.5)
-			k_sort(stack_a, bench);
-		else if (disorder >= 0.5)
-			radix_sort(stack_a, bench);
+		if ((dorder != 0 && dorder < 0.2) || (len <= 5))
+			selection_sort(stack_a, b);
+		else if (dorder >= 0.2 && dorder < 0.5)
+			k_sort(stack_a, b);
+		else if (dorder >= 0.5)
+			radix_sort(stack_a, b);
 	}
 }
 
@@ -72,64 +72,59 @@ static int	fill_stack(t_stack **stack_a, int argc, char **args, int i)
 	return (1);
 }
 
-static void	print_strategy(int mode, double disorder, int len)
+static void	benchmark(int mode, double dorder, int len, t_bench *b)
 {
+	fprintf(stderr, "[bench] disorder: %.2f%%\n", dorder * 100);
 	if (mode % 10 == 1)
-		fprintf(stderr,"[bench] strategy: Simple / O(n^2)\n");
+		fprintf(stderr, "[bench] strategy: Simple / O(n^2)\n");
 	else if (mode % 10 == 2)
-		fprintf(stderr,"[bench] strategy: Medium / O(n√n)\n");
+		fprintf(stderr, "[bench] strategy: Medium / O(n√n)\n");
 	else if (mode % 10 == 3)
-		fprintf(stderr,"[bench] strategy: Complex / O(n log n)\n");
+		fprintf(stderr, "[bench] strategy: Complex / O(n log n)\n");
 	else if (mode % 10 == 0)
 	{
-		if (disorder < 0.2 || len <= 5)
-			fprintf(stderr,"[bench] strategy: Adaptive / O(n^2)\n");
-		else if (disorder >= 0.2 && disorder < 0.5)
-			fprintf(stderr,"[bench] strategy: Adaptive / O(n√n)\n");
+		if (dorder < 0.2 || len <= 5)
+			fprintf(stderr, "[bench] strategy: Adaptive / O(n^2)\n");
+		else if (dorder >= 0.2 && dorder < 0.5)
+			fprintf(stderr, "[bench] strategy: Adaptive / O(n√n)\n");
 		else
-			fprintf(stderr,"[bench] strategy: Adaptive / O(n log n)\n");
+			fprintf(stderr, "[bench] strategy: Adaptive / O(n log n)\n");
 	}
-}
-
-static void	benchmark(int mode, double disorder, int len, t_bench *bench)
-{
-	fprintf(stderr ,"[bench] disorder: %.2f%%\n", disorder * 100);
-	print_strategy(mode, disorder, len);
-	fprintf(stderr ,"[bench] total_ops: %d\n", bench->total_ops);
-	fprintf(stderr ,"[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n", 
-		bench->sa, bench->sb, bench->ss, bench->pa, bench->pb);
+	fprintf(stderr, "[bench] total_ops: %d\n", b->total_ops);
+	fprintf(stderr, "[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n",
+		b->sa, b->sb, b->ss, b->pa, b->pb);
 	fprintf(stderr, "[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n",
-		bench->ra, bench->rb, bench->rr, bench->rra, bench->rrb, bench->rrr);
+		b->ra, b->rb, b->rr, b->rra, b->rrb, b->rrr);
 }
 
 int	main(int argc, char **args)
 {
 	t_stack	*stack_a;
-	t_bench	*bench;
-	t_bench	tbench;
+	t_bench	*b;
+	t_bench	tb;
 	int		i;
 	int		mode;
-	double	disorder;
+	double	dorder;
 	int		err;
 
 	if (argc == 1 || (argc == 2 && !args[1][0]))
 		return (0);
-	ft_bzero(&tbench, sizeof(t_bench));
+	ft_bzero(&tb, sizeof(t_bench));
 	i = 1;
 	mode = 0;
 	stack_a = NULL;
 	select_mode(args, &mode, &i);
 	err = fill_stack(&stack_a, argc, args, i);
-	disorder = compute_disorder(&stack_a);
+	dorder = compute_disorder(&stack_a);
 	if (err)
 	{
 		if (mode >= 10)
-			bench = &tbench;
+			b = &tb;
 		else
-			bench = NULL;
-		select_sort(&stack_a, &mode, disorder, bench);
+			b = NULL;
+		select_sort(&stack_a, &mode, dorder, b);
 		if (mode >= 10)
-			benchmark(mode, disorder, stack_len(&stack_a), bench);
+			benchmark(mode, dorder, stack_len(&stack_a), b);
 	}
 	ft_lstclear(&stack_a);
 	return (0);

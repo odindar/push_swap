@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:17 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/17 17:15:21 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/18 15:27:08 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ int		append_node(t_stack **stack, int value);
 int		has_available(t_stack *stack, int content);
 
 // operations
-void	sa(t_stack **stack_a, t_bench *bench);
-void	sb(t_stack **stack_b, t_bench *bench);
-void	ss(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
-void	pa(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
-void	pb(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
-void	ra(t_stack **stack_a, t_bench *bench);
-void	rb(t_stack **stack_b, t_bench *bench);
-void	rr(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
-void	rra(t_stack **stack_a, t_bench *bench);
-void	rrb(t_stack **stack_b, t_bench *bench);
-void	rrr(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
+void	sa(t_stack **stack_a, t_bench *b);
+void	sb(t_stack **stack_b, t_bench *b);
+void	ss(t_stack **stack_a, t_stack **stack_b, t_bench *b);
+void	pa(t_stack **stack_a, t_stack **stack_b, t_bench *b);
+void	pb(t_stack **stack_a, t_stack **stack_b, t_bench *b);
+void	ra(t_stack **stack_a, t_bench *b);
+void	rb(t_stack **stack_b, t_bench *b);
+void	rr(t_stack **stack_a, t_stack **stack_b, t_bench *b);
+void	rra(t_stack **stack_a, t_bench *b);
+void	rrb(t_stack **stack_b, t_bench *b);
+void	rrr(t_stack **stack_a, t_stack **stack_b, t_bench *b);
 
 // disorder metric
 double	compute_disorder(t_stack **stack);
@@ -79,8 +79,8 @@ int		get_median(t_stack **stack);
 void	assign_index(t_stack **stack_a);
 
 // sorts
-void	selection_sort(t_stack **stack_a, t_bench *bench);
-void	k_sort(t_stack **stack_a, t_bench *bench);
-void	radix_sort(t_stack **stack_a, t_bench *bench);
+void	selection_sort(t_stack **stack_a, t_bench *b);
+void	k_sort(t_stack **stack_a, t_bench *b);
+void	radix_sort(t_stack **stack_a, t_bench *b);
 
 #endif

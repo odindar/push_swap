@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:29:11 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/17 17:00:31 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/18 15:26:40 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,24 @@ static void	push(t_stack **stack_src, t_stack **stack_dst)
 	ft_lstadd_front(stack_dst, tmp);
 }
 
-void	pa(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
+void	pa(t_stack **stack_a, t_stack **stack_b, t_bench *b)
 {
 	push(stack_b, stack_a);
 	write(1, "pa\n", 3);
-	if(bench != NULL)
+	if (b != NULL)
 	{
-		bench->pa++;
-		bench->total_ops++;
+		b->pa++;
+		b->total_ops++;
 	}
 }
 
-void	pb(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
+void	pb(t_stack **stack_a, t_stack **stack_b, t_bench *b)
 {
 	push(stack_a, stack_b);
 	write(1, "pb\n", 3);
-	if(bench != NULL)
+	if (b != NULL)
 	{
-		bench->pb++;
-		bench->total_ops++;
+		b->pb++;
+		b->total_ops++;
 	}
 }

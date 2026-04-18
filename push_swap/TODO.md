@@ -1,4 +1,0 @@
-- printf içni stdio.h'dan kurtulcaz.
-- 1 sayı için seg fault yiyoruz
-- negatif sayıları stacke almıyoruz
-- k-sort için köklü bir range seçimi üzerine bakıcaz

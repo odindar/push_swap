@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:09:41 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/17 17:01:17 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/18 15:26:43 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,36 +26,36 @@ static void	swap(t_stack **stack)
 	*stack = second;
 }
 
-void	sa(t_stack **stack_a, t_bench *bench)
+void	sa(t_stack **stack_a, t_bench *b)
 {
 	swap(stack_a);
 	write(1, "sa\n", 3);
-	if(bench != NULL)
+	if (b != NULL)
 	{
-		bench->sa++;
-		bench->total_ops++;
+		b->sa++;
+		b->total_ops++;
 	}
 }
 
-void	sb(t_stack **stack_b, t_bench *bench)
+void	sb(t_stack **stack_b, t_bench *b)
 {
 	swap(stack_b);
 	write(1, "sb\n", 3);
-	if(bench != NULL)
+	if (b != NULL)
 	{
-		bench->sb++;
-		bench->total_ops++;
+		b->sb++;
+		b->total_ops++;
 	}
 }
 
-void	ss(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
+void	ss(t_stack **stack_a, t_stack **stack_b, t_bench *b)
 {
 	swap(stack_a);
 	swap(stack_b);
 	write(1, "ss\n", 3);
-	if(bench != NULL)
+	if (b != NULL)
 	{
-		bench->ss++;
-		bench->total_ops++;
+		b->ss++;
+		b->total_ops++;
 	}
 }
