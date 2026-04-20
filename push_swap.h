@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 typedef struct s_stack
 {
@@ -85,5 +86,8 @@ void	assign_index(t_stack **stack_a);
 void	selection_sort(t_stack **stack_a, t_bench *b);
 void	k_sort(t_stack **stack_a, t_bench *b);
 void	radix_sort(t_stack **stack_a, t_bench *b);
+
+//print
+void	ft_printf(int fd, const char *format, ...);
 
 #endif

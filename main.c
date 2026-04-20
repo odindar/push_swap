@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static void	select_mode(char **args, t_bench *b, int *i)
 {
@@ -76,26 +75,26 @@ static int	fill_stack(t_stack **stack_a, int argc, char **args, int i)
 
 static void	benchmark(int strategy, double dorder, int len, t_bench *b)
 {
-	fprintf(stderr, "[bench] disorder: %.2f%%\n", dorder * 100);
+	ft_printf(2, "[bench] disorder: %f%%\n", dorder * 100);
 	if (strategy == 1)
-		fprintf(stderr, "[bench] strategy: Simple / O(n^2)\n");
+		ft_printf(2, "[bench] strategy: Simple / O(n^2)\n");
 	else if (strategy == 2)
-		fprintf(stderr, "[bench] strategy: Medium / O(n√n)\n");
+		ft_printf(2, "[bench] strategy: Medium / O(n√n)\n");
 	else if (strategy == 3)
-		fprintf(stderr, "[bench] strategy: Complex / O(n log n)\n");
+		ft_printf(2, "[bench] strategy: Complex / O(n log n)\n");
 	else if (strategy == 0)
 	{
 		if (dorder < 0.2 || len <= 5)
-			fprintf(stderr, "[bench] strategy: Adaptive / O(n^2)\n");
+			ft_printf(2, "[bench] strategy: Adaptive / O(n^2)\n");
 		else if (dorder >= 0.2 && dorder < 0.5)
-			fprintf(stderr, "[bench] strategy: Adaptive / O(n√n)\n");
+			ft_printf(2, "[bench] strategy: Adaptive / O(n√n)\n");
 		else
-			fprintf(stderr, "[bench] strategy: Adaptive / O(n log n)\n");
+			ft_printf(2, "[bench] strategy: Adaptive / O(n log n)\n");
 	}
-	fprintf(stderr, "[bench] total_ops: %d\n", b->total_ops);
-	fprintf(stderr, "[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n",
+	ft_printf(2, "[bench] total_ops: %d\n", b->total_ops);
+	ft_printf(2, "[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n",
 		b->sa, b->sb, b->ss, b->pa, b->pb);
-	fprintf(stderr, "[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n",
+	ft_printf(2, "[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n",
 		b->ra, b->rb, b->rr, b->rra, b->rrb, b->rrr);
 }
 
@@ -124,7 +123,7 @@ int	main(int argc, char **args)
 	if (tb.is_bench == 1)
 		benchmark(tb.strategy, dorder, stack_len(&stack_a), b);
 	if (tb.ico == 1)
-		printf("%d", b->total_ops);
+		ft_printf(1, "%d", b->total_ops);
 	ft_lstclear(&stack_a);
 	return (0);
 }
