@@ -6,13 +6,13 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:46:36 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/19 17:33:13 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/20 10:03:02 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
+int	strict_atoi(const char *str, int *err)
 {
 	int		i;
 	int		sign;
@@ -21,17 +21,20 @@ int	ft_atoi(const char *str)
 	i = 0;
 	sign = 1;
 	res = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == '-')
 	{
-		if (str[i] == '-')
-			sign = -1;
+		sign = -1;
 		i++;
 	}
-	while ((str[i] >= '0' && str[i] <= '9'))
+	if (!str[i])
+		*err = 1;
+	while (str[i])
 	{
+		if (str[i] < '0' || str[i] > '9')
+			*err = 1;
 		res = (res * 10) + (str[i] - '0');
+		if ((res * sign) > 2147483647 || (res * sign) < -2147483648)
+			*err = 1;
 		i++;
 	}
 	return ((int)(res * sign));
@@ -65,7 +68,7 @@ void	*ft_bzero(void *s, size_t n)
 	return (s);
 }
 
-size_t  ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 

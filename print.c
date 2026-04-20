@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   k_sort.c                                           :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 12:54:05 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/19 17:33:08 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/20 09:08:45 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static  void	ft_putstr_fd(char *s, int fd)
+static	void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ static  void	ft_putstr_fd(char *s, int fd)
 	write(fd, s, i);
 }
 
-static  void	ft_putnbr_fd(int n, int fd)
+static	void	ft_putnbr_fd(int n, int fd)
 {
 	long	nbr;
 	char	c;
@@ -41,13 +41,13 @@ static  void	ft_putnbr_fd(int n, int fd)
 	write(fd, &c, 1);
 }
 
-static  void	print_disorder_fd(double n, int fd)
+static	void	print_disorder_fd(double n, int fd)
 {
 	int		total;
 	int		f;
 	char	c;
 
-	total = (int)(n * 100 + 0.5); 
+	total = (int)(n * 100 + 0.5);
 	ft_putnbr_fd(total / 100, fd);
 	write(fd, ".", 1);
 	f = total % 100;

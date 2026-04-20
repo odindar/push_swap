@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:15 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/19 22:02:38 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/20 10:03:40 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,14 @@ static void	select_sort(t_stack **stack_a, int str, double dorder, t_bench *b)
 static int	fill_stack(t_stack **stack_a, int argc, char **args, int i)
 {
 	int	num;
+	int	err;
 
 	while (i < argc)
 	{
-		num = ft_atoi(args[i]);
-		if (!(has_available(*stack_a, num) && num != -1
-				&& append_node(stack_a, num)))
+		err = 0;
+		num = strict_atoi(args[i], &err);
+		if (err || !has_available(*stack_a, num)
+			|| !append_node(stack_a, num))
 		{
 			write(2, "Error\n", 6);
 			ft_lstclear(stack_a);

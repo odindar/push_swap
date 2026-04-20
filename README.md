@@ -76,11 +76,12 @@ Calculates input disorder level and automatically selects the best algorithm. Pr
 **iergin**
 - Complex algorithm
 - Disorder metric calculation
-- Stack operations (swap, push, rotate, reverse rotate)
 - Main program structure and algorithm selection logic
 
 **odindar**
-- Simple and medium algorithms
+- Simple algorithms
+- Medium algorithms
 - Utilities and performance optimization
+- Stack operations (swap, push, rotate, reverse rotate)
 
 Both contributors understand the entire codebase and can explain any part of the implementation.
