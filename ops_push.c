@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:29:11 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/19 22:05:52 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/22 22:50:49 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ static void	push(t_stack **stack_src, t_stack **stack_dst)
 void	pa(t_stack **stack_a, t_stack **stack_b, t_bench *b)
 {
 	push(stack_b, stack_a);
-	if (b == NULL || b->ico == 0)
-		write(1, "pa\n", 3);
+	write(1, "pa\n", 3);
 	if (b != NULL)
 	{
 		b->pa++;
@@ -39,8 +38,7 @@ void	pa(t_stack **stack_a, t_stack **stack_b, t_bench *b)
 void	pb(t_stack **stack_a, t_stack **stack_b, t_bench *b)
 {
 	push(stack_a, stack_b);
-	if (b == NULL || b->ico == 0)
-		write(1, "pb\n", 3);
+	write(1, "pb\n", 3);
 	if (b != NULL)
 	{
 		b->pb++;

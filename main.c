@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:15 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/22 22:42:34 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/22 22:51:10 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ static void	select_mode(char **args, t_bench *b, int *i)
 			b->strategy = 0;
 		else if (ft_strncmp(args[*i], "--bench", 8) == 0)
 			b->is_bench = 1;
-		else if (ft_strncmp(args[*i], "--count-only", 13) == 0)
-			b->ico = 1;
 		(*i)++;
 	}
 }
@@ -73,7 +71,10 @@ static int	fill_stack(t_stack **stack_a, int argc, char **args, int i)
 		i++;
 	}
 	if (is_sorted(*stack_a))
+	{
+		ft_lstclear(stack_a);
 		return (0);
+	}
 	return (1);
 }
 
@@ -119,15 +120,13 @@ int	main(int argc, char **args)
 	if (!fill_stack(&stack_a, argc, args, i))
 		return (0);
 	dorder = compute_disorder(&stack_a);
-	if (tb.is_bench || tb.ico)
+	if (tb.is_bench)
 		b = &tb;
 	else
 		b = NULL;
 	select_sort(&stack_a, tb.strategy, dorder, b);
 	if (tb.is_bench == 1)
 		benchmark(tb.strategy, dorder, stack_len(&stack_a), b);
-	if (tb.ico == 1)
-		ft_printf(1, "%d", b->total_ops);
 	ft_lstclear(&stack_a);
 	return (0);
 }

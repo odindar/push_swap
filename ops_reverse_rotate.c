@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 10:58:59 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/19 22:05:52 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/22 22:50:08 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ static void	rrotate(t_stack **stack_src)
 void	rra(t_stack **stack_a, t_bench *b)
 {
 	rrotate(stack_a);
-	if (b == NULL || b->ico == 0)
-		write(1, "rra\n", 4);
+	write(1, "rra\n", 4);
 	if (b != NULL)
 	{
 		b->rra++;
@@ -45,8 +44,7 @@ void	rra(t_stack **stack_a, t_bench *b)
 void	rrb(t_stack **stack_b, t_bench *b)
 {
 	rrotate(stack_b);
-	if (b == NULL || b->ico == 0)
-		write(1, "rrb\n", 4);
+	write(1, "rrb\n", 4);
 	if (b != NULL)
 	{
 		b->rrb++;
@@ -58,8 +56,7 @@ void	rrr(t_stack **stack_a, t_stack **stack_b, t_bench *b)
 {
 	rrotate(stack_a);
 	rrotate(stack_b);
-	if (b == NULL || b->ico == 0)
-		write(1, "rrr\n", 4);
+	write(1, "rrr\n", 4);
 	if (b != NULL)
 	{
 		b->rrr++;
