@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:15 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/20 10:03:40 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/22 22:42:34 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ static int	fill_stack(t_stack **stack_a, int argc, char **args, int i)
 		}
 		i++;
 	}
+	if (is_sorted(*stack_a))
+		return (0);
 	return (1);
 }
 

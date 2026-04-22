@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 17:52:57 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/19 17:33:40 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/22 22:41:51 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static	void	move_min_to_top(t_stack **stack_a, int len, t_bench *b)
 	}
 }
 
-static	int	is_sorted(t_stack *stack_a)
+int	is_sorted(t_stack *stack_a)
 {
 	if (!stack_a)
 		return (1);

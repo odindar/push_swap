@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:17 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/20 09:45:25 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/22 22:42:14 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,8 @@ void	*ft_bzero(void *s, size_t n);
 int		stack_len(t_stack **stack);
 int		stack_min(t_stack **stack);
 int		stack_max(t_stack **stack);
-void	bubble_sort_array(int *arr, int len);
-int		get_median(t_stack **stack);
 void	assign_index(t_stack **stack_a);
+int		is_sorted(t_stack *stack_a);
 
 // sorts
 void	selection_sort(t_stack **stack_a, t_bench *b);
