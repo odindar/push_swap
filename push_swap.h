@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:17 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/23 14:37:44 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/23 18:04:26 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_stack
 	int				content;
 	int				index;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 }	t_stack;
 
 typedef struct s_bench
@@ -79,16 +78,19 @@ int		stack_min(t_stack **stack);
 int		stack_max(t_stack **stack);
 void	assign_index(t_stack **stack_a);
 int		is_sorted(t_stack *stack_a);
+void	move_min_to_top(t_stack **stack_a, int len, t_bench *b);
 
 // sorts
 void	selection_sort(t_stack **stack_a, t_bench *b);
 void	k_sort(t_stack **stack_a, t_bench *b);
 void	radix_sort(t_stack **stack_a, t_bench *b);
+void	sort_three(t_stack **stack_a, t_bench *b);
+void	sort_five(t_stack **stack_a, t_bench *b);
 
 //print
 void	ft_printf(int fd, const char *format, ...);
 
-//split 
+//split
 char	**ft_split(char const *s, char c);
 void	free_split(char **split_arr);
 

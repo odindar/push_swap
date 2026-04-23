@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:35:48 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/19 17:33:40 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/23 16:08:03 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_stack	*create_node(int content)
 		return (NULL);
 	new_node->content = content;
 	new_node->next = NULL;
-	new_node->prev = NULL;
 	new_node->index = -1;
 	return (new_node);
 }
@@ -46,7 +45,6 @@ int	append_node(t_stack **stack, int content)
 	while (last->next != NULL)
 		last = last->next;
 	last->next = new_node;
-	new_node->prev = last;
 	return (1);
 }
 

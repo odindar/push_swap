@@ -6,13 +6,13 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 17:52:57 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/22 22:41:51 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/23 18:14:26 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	void	move_min_to_top(t_stack **stack_a, int len, t_bench *b)
+void	move_min_to_top(t_stack **stack_a, int len, t_bench *b)
 {
 	int		j;
 	int		min;
@@ -60,10 +60,20 @@ void	selection_sort(t_stack **stack_a, t_bench *b)
 		return ;
 	stack_b = NULL;
 	i = stack_len(stack_a);
+	if (i == 3)
+	{
+		sort_three(stack_a, b);
+		return ;
+	}
+	else if (i == 5)
+	{
+		sort_five(stack_a, b);
+		return ;
+	}
 	while (i > 2)
 	{
 		if (is_sorted(*stack_a))
-			break ;
+			break ; // return
 		move_min_to_top(stack_a, i, b);
 		pb(stack_a, &stack_b, b);
 		i--;
