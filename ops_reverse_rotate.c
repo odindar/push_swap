@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 10:58:59 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/22 22:50:08 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/24 22:50:34 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	rrotate(t_stack **stack_src)
 	t_stack	*last;
 	t_stack	*second_to_last;
 
-	if (!stack_src)
+	if (!stack_src || !*stack_src || !(*stack_src)->next)
 		return ;
 	last = *stack_src;
 	second_to_last = NULL;
