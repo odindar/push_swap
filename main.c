@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:15 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/24 22:25:10 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/24 23:55:00 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ static int	fill_stack(t_stack **stack_a, int argc, char **args, int i)
 			write(2, "Error\n", 6);
 			ft_lstclear(stack_a);
 			free_split(split_args);
-			return (0);
+			return (-1);
 		}
 		if (!split(stack_a, split_args))
-			return (0);
+			return (-1);
 		free_split(split_args);
 		i++;
 	}
@@ -81,7 +81,7 @@ static int	fill_stack(t_stack **stack_a, int argc, char **args, int i)
 	return (1);
 }
 
-static void	benchmark(int strategy, double dorder, int len, t_bench *b)
+static void	benchmark(int strategy, double dorder, t_bench *b)
 {
 	ft_printf(2, "[bench] disorder: %f%%\n", dorder * 100);
 	if (strategy == 1)
@@ -92,7 +92,7 @@ static void	benchmark(int strategy, double dorder, int len, t_bench *b)
 		ft_printf(2, "[bench] strategy: Complex / O(n log n)\n");
 	else if (strategy == 0)
 	{
-		if (dorder < 0.2 || len <= 5)
+		if (dorder < 0.2)
 			ft_printf(2, "[bench] strategy: Adaptive / O(n^2)\n");
 		else if (dorder >= 0.2 && dorder < 0.5)
 			ft_printf(2, "[bench] strategy: Adaptive / O(n√n)\n");
@@ -120,7 +120,7 @@ int	main(int argc, char **args)
 	i = 1;
 	stack_a = NULL;
 	select_mode(args, &tb, &i);
-	if (!fill_stack(&stack_a, argc, args, i))
+	if (fill_stack(&stack_a, argc, args, i) == -1)
 		return (0);
 	dorder = compute_disorder(&stack_a);
 	if (tb.is_bench)
@@ -129,7 +129,7 @@ int	main(int argc, char **args)
 		b = NULL;
 	select_sort(&stack_a, tb.strategy, dorder, b);
 	if (tb.is_bench == 1)
-		benchmark(tb.strategy, dorder, stack_len(&stack_a), b);
+		benchmark(tb.strategy, dorder, b);
 	ft_lstclear(&stack_a);
 	return (0);
 }

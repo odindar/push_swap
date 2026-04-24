@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:46:36 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/23 14:38:14 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/24 23:44:26 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	strict_atoi(const char *str, int *err)
 	}
 	if (!str[i])
 		*err = 1;
-	while (str[i])
+	while (str[i] && !*err)
 	{
 		if (str[i] < '0' || str[i] > '9')
 			*err = 1;

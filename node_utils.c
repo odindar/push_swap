@@ -6,13 +6,13 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:35:48 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/23 16:08:03 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/24 23:36:29 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*create_node(int content)
+static t_stack	*create_node(int content)
 {
 	t_stack	*new_node;
 
