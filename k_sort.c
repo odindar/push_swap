@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 12:54:05 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/23 18:42:57 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/24 22:00:32 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,22 +89,12 @@ static	void	sort_b_to_a(t_stack **stack_a, t_stack **stack_b, t_bench *b)
 void	k_sort(t_stack **stack_a, t_bench *b)
 {
 	t_stack	*stack_b;
-	int		len;
 
 	stack_b = NULL;
 	if (!stack_a || !*stack_a || !(*stack_a)->next)
 		return ;
-	len = stack_len(stack_a);
-	if (len == 3)
-	{
-		sort_three(stack_a, b);
+	if (handle_small_sort(stack_len(stack_a), stack_a, b))
 		return ;
-	}
-	else if (len == 5)
-	{
-		sort_five(stack_a, b);
-		return ;
-	}
 	assign_index(stack_a);
 	k_sort_a_to_b(stack_a, &stack_b, b);
 	sort_b_to_a(stack_a, &stack_b, b);

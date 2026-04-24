@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:15 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/23 18:44:01 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/24 22:25:10 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ static void	select_mode(char **args, t_bench *b, int *i)
 
 static void	select_sort(t_stack **stack_a, int str, double dorder, t_bench *b)
 {
-	int	len;
-
-	len = stack_len(stack_a);
 	if (str == 1)
 		selection_sort(stack_a, b);
 	else if (str == 2)
@@ -59,10 +56,7 @@ static void	select_sort(t_stack **stack_a, int str, double dorder, t_bench *b)
 
 static int	fill_stack(t_stack **stack_a, int argc, char **args, int i)
 {
-	int		num;
-	int		err;
 	char	**split_args;
-	int		j;
 
 	while (i < argc)
 	{
@@ -74,21 +68,8 @@ static int	fill_stack(t_stack **stack_a, int argc, char **args, int i)
 			free_split(split_args);
 			return (0);
 		}
-		j = 0;
-		while (split_args[j])
-		{
-			err = 0;
-			num = strict_atoi(split_args[j], &err);
-			if (err || !has_available(*stack_a, num)
-				|| !append_node(stack_a, num))
-			{
-				write(2, "Error\n", 6);
-				ft_lstclear(stack_a);
-				free_split(split_args);
-				return (0);
-			}
-			j++;
-		}
+		if (!split(stack_a, split_args))
+			return (0);
 		free_split(split_args);
 		i++;
 	}

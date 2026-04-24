@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:28:17 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/23 18:04:26 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/24 22:29:45 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,19 @@ int		stack_max(t_stack **stack);
 void	assign_index(t_stack **stack_a);
 int		is_sorted(t_stack *stack_a);
 void	move_min_to_top(t_stack **stack_a, int len, t_bench *b);
+void	push_b_to_a(t_stack **stack_a, t_stack **stack_b, t_bench *b);
 
 // sorts
 void	selection_sort(t_stack **stack_a, t_bench *b);
 void	k_sort(t_stack **stack_a, t_bench *b);
 void	radix_sort(t_stack **stack_a, t_bench *b);
-void	sort_three(t_stack **stack_a, t_bench *b);
-void	sort_five(t_stack **stack_a, t_bench *b);
+int		handle_small_sort(int len, t_stack **stack_a, t_bench *b);
+
+// parse_utils.c
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_strdup(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+int		split(t_stack **stack_a, char **split_args);
 
 //print
 void	ft_printf(int fd, const char *format, ...);

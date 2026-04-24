@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 17:52:57 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/23 18:14:26 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/24 22:30:03 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,30 +60,17 @@ void	selection_sort(t_stack **stack_a, t_bench *b)
 		return ;
 	stack_b = NULL;
 	i = stack_len(stack_a);
-	if (i == 3)
-	{
-		sort_three(stack_a, b);
+	if (handle_small_sort(i, stack_a, b))
 		return ;
-	}
-	else if (i == 5)
-	{
-		sort_five(stack_a, b);
-		return ;
-	}
 	while (i > 2)
 	{
 		if (is_sorted(*stack_a))
-			break ; // return
+			return ;
 		move_min_to_top(stack_a, i, b);
 		pb(stack_a, &stack_b, b);
 		i--;
 	}
 	if ((*stack_a)->content > (*stack_a)->next->content)
 		sa(stack_a, b);
-	i = stack_len(&stack_b);
-	while (i > 0)
-	{
-		pa(stack_a, &stack_b, b);
-		i--;
-	}
+	push_b_to_a(stack_a, &stack_b, b);
 }

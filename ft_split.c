@@ -6,70 +6,11 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 23:17:28 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/23 15:06:46 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/24 22:10:40 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*ptr;
-	size_t	total_size;
-
-	if ((nmemb && (size > ((size_t) - 1) / nmemb)))
-		return (NULL);
-	total_size = nmemb * size;
-	ptr = malloc(total_size);
-	if (ptr == NULL)
-		return (NULL);
-	ft_bzero(ptr, total_size);
-	return (ptr);
-}
-
-char	*ft_strdup(const char *s)
-{
-	char	*d;
-	size_t	len;
-	size_t	i;
-
-	len = ft_strlen(s);
-	d = (char *)ft_calloc((len + 1), sizeof(char));
-	if (!d)
-		return (NULL);
-	i = 0;
-	while (s[i])
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (d);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*d;
-	size_t	s_len;
-	size_t	i;
-
-	if (!s)
-		return (NULL);
-	s_len = ft_strlen(s);
-	if (start >= s_len)
-		return (ft_strdup(""));
-	if (len > s_len - start)
-		len = s_len - start;
-	d = (char *)ft_calloc((len + 1), sizeof(char));
-	if (!d)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		d[i] = s[start + i];
-		i++;
-	}
-	return (d);
-}
 
 static int	count_words(char const *s, char c)
 {

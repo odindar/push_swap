@@ -6,7 +6,7 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 13:59:50 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/19 17:33:40 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/24 22:29:30 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,10 @@ int	stack_min(t_stack **stack)
 		i++;
 	}
 	return (index);
+}
+
+void	push_b_to_a(t_stack **stack_a, t_stack **stack_b, t_bench *b)
+{
+	while (*stack_b != NULL)
+		pa(stack_a, stack_b, b);
 }

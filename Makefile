@@ -18,7 +18,8 @@ SRCS		= main.c \
 			  ft_split.c \
 			  k_sort.c \
 			  radix.c \
-			  sort_small.c
+			  sort_small.c \
+			  parse_utils.c
 
 OBJS		= $(SRCS:.c=.o)
 

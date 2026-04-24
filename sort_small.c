@@ -6,28 +6,13 @@
 /*   By: iergin <iergin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 15:45:55 by iergin            #+#    #+#             */
-/*   Updated: 2026/04/23 18:46:37 by iergin           ###   ########.fr       */
+/*   Updated: 2026/04/24 21:57:35 by iergin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int get_position(t_stack *stack, int target_value)
-{
-	int pos;
-
-	pos = 0;
-	while (stack)
-	{
-		if (stack->content == target_value)
-			return (pos);
-		pos++;
-		stack = stack->next;
-	}
-	return (0);
-}
-
-void	sort_three(t_stack **stack_a, t_bench *b)
+static void	sort_three(t_stack **stack_a, t_bench *b)
 {
 	if (!stack_a || !*stack_a || !(*stack_a)->next)
 		return ;
@@ -40,7 +25,7 @@ void	sort_three(t_stack **stack_a, t_bench *b)
 		sa(stack_a, b);
 }
 
-void	sort_five(t_stack **stack_a, t_bench *b)
+static void	sort_five(t_stack **stack_a, t_bench *b)
 {
 	t_stack	*stack_b;
 
@@ -54,4 +39,15 @@ void	sort_five(t_stack **stack_a, t_bench *b)
 	sort_three(stack_a, b);
 	pa(stack_a, &stack_b, b);
 	pa(stack_a, &stack_b, b);
+}
+
+int	handle_small_sort(int len, t_stack **stack_a, t_bench *b)
+{
+	if (len == 3)
+		sort_three(stack_a, b);
+	else if (len == 5)
+		sort_five(stack_a, b);
+	else
+		return (0);
+	return (1);
 }
