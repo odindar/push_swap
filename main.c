@@ -26,6 +26,8 @@ static void	select_mode(char **args, t_bench *b, int *i)
 			b->strategy = 0;
 		else if (ft_strncmp(args[*i], "--bench", 8) == 0)
 			b->is_bench = 1;
+		else if (ft_strncmp(args[*i], "--count-only", 13) == 0)
+			b->count_only = 1;
 		else
 		{
 			write(2, "Error\n", 6);
@@ -123,13 +125,15 @@ int	main(int argc, char **args)
 	if (fill_stack(&stack_a, argc, args, i) == -1)
 		return (0);
 	dorder = compute_disorder(&stack_a);
-	if (tb.is_bench)
+	if (tb.is_bench || tb.count_only)
 		b = &tb;
 	else
 		b = NULL;
 	select_sort(&stack_a, tb.strategy, dorder, b);
 	if (tb.is_bench == 1)
 		benchmark(tb.strategy, stack_len(&stack_a), dorder, b);
+	if (tb.count_only == 1)
+		ft_printf(1, "%d \n", b->total_ops);
 	ft_lstclear(&stack_a);
 	return (0);
 }

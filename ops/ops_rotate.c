@@ -27,7 +27,8 @@ static void	rotate(t_stack **stack_src)
 void	ra(t_stack **stack_a, t_bench *b)
 {
 	rotate(stack_a);
-	write(1, "ra\n", 3);
+	if (b == NULL)
+		write(1, "ra\n", 3);
 	if (b != NULL)
 	{
 		b->ra++;
@@ -38,7 +39,8 @@ void	ra(t_stack **stack_a, t_bench *b)
 void	rb(t_stack **stack_b, t_bench *b)
 {
 	rotate(stack_b);
-	write(1, "rb\n", 3);
+	if (b == NULL)
+		write(1, "rb\n", 3);
 	if (b != NULL)
 	{
 		b->rb++;
@@ -50,7 +52,8 @@ void	rr(t_stack **stack_a, t_stack **stack_b, t_bench *b)
 {
 	rotate(stack_a);
 	rotate(stack_b);
-	write(1, "rr\n", 3);
+	if (b == NULL)
+		write(1, "rr\n", 3);
 	if (b != NULL)
 	{
 		b->rr++;

@@ -28,6 +28,7 @@ typedef struct s_bench
 {
 	int				strategy;
 	int				is_bench;
+	int				count_only;
 	int				sa;
 	int				sb;
 	int				ss;
