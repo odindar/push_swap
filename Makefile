@@ -1,25 +1,25 @@
 NAME		= push_swap
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -I.
 RM			= rm -f
 
-SRCS		= main.c \
-			  ops_push.c \
-			  ops_reverse_rotate.c \
-			  ops_rotate.c \
-			  ops_swap.c \
-			  next_simple.c \
-			  libft_utils.c \
-			  lst_utils.c \
-			  node_utils.c \
-			  sort_utils.c \
-			  disorder.c \
-			  print.c \
-			  ft_split.c \
-			  k_sort.c \
-			  radix.c \
-			  sort_small.c \
-			  parse_utils.c
+SRCS        = main.c \
+              ops/ops_push.c \
+              ops/ops_reverse_rotate.c \
+              ops/ops_rotate.c \
+              ops/ops_swap.c \
+              simple/next_simple.c \
+              simple/sort_small.c \
+              utils/libft_utils.c \
+              utils/lst_utils.c \
+              utils/node_utils.c \
+              utils/sort_utils.c \
+              utils/parse_utils.c \
+              helper_func/disorder.c \
+              helper_func/print.c \
+              helper_func/ft_split.c \
+              medium/k_sort.c \
+              complex/radix.c
 
 OBJS		= $(SRCS:.c=.o)
 
