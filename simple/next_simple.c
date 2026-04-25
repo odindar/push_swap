@@ -60,8 +60,6 @@ void	selection_sort(t_stack **stack_a, t_bench *b)
 		return ;
 	stack_b = NULL;
 	i = stack_len(stack_a);
-	if (handle_small_sort(i, stack_a, b))
-		return ;
 	while (i > 2)
 	{
 		if (is_sorted(*stack_a))

@@ -93,8 +93,6 @@ void	k_sort(t_stack **stack_a, t_bench *b)
 	stack_b = NULL;
 	if (!stack_a || !*stack_a || !(*stack_a)->next)
 		return ;
-	if (handle_small_sort(stack_len(stack_a), stack_a, b))
-		return ;
 	assign_index(stack_a);
 	k_sort_a_to_b(stack_a, &stack_b, b);
 	sort_b_to_a(stack_a, &stack_b, b);

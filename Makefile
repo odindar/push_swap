@@ -9,7 +9,6 @@ SRCS        = main.c \
               ops/ops_rotate.c \
               ops/ops_swap.c \
               simple/next_simple.c \
-              simple/sort_small.c \
               utils/libft_utils.c \
               utils/lst_utils.c \
               utils/node_utils.c \

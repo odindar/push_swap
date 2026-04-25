@@ -50,8 +50,6 @@ void	radix_sort(t_stack **stack_a, t_bench *b)
 	stack_b = NULL;
 	if (!stack_a || !*stack_a || !(*stack_a)->next)
 		return ;
-	if (handle_small_sort(stack_len(stack_a), stack_a, b))
-		return ;
 	assign_index(stack_a);
 	max_bit = max_idx_bit(stack_len(stack_a) - 1);
 	while (i < max_bit)

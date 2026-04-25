@@ -45,7 +45,7 @@ static void	select_sort(t_stack **stack_a, int str, double dorder, t_bench *b)
 		radix_sort(stack_a, b);
 	else if (str == 0)
 	{
-		if ((dorder != 0 && dorder < 0.2))
+		if (dorder < 0.2 || stack_len(stack_a) <= 5 )
 			selection_sort(stack_a, b);
 		else if (dorder >= 0.2 && dorder < 0.5)
 			k_sort(stack_a, b);
@@ -81,7 +81,7 @@ static int	fill_stack(t_stack **stack_a, int argc, char **args, int i)
 	return (1);
 }
 
-static void	benchmark(int strategy, double dorder, t_bench *b)
+static void	benchmark(int strategy, int len, double dorder, t_bench *b)
 {
 	ft_printf(2, "[bench] disorder: %f%%\n", dorder * 100);
 	if (strategy == 1)
@@ -92,7 +92,7 @@ static void	benchmark(int strategy, double dorder, t_bench *b)
 		ft_printf(2, "[bench] strategy: Complex / O(n log n)\n");
 	else if (strategy == 0)
 	{
-		if (dorder < 0.2)
+		if (dorder < 0.2 || len <= 5 )
 			ft_printf(2, "[bench] strategy: Adaptive / O(n^2)\n");
 		else if (dorder >= 0.2 && dorder < 0.5)
 			ft_printf(2, "[bench] strategy: Adaptive / O(n√n)\n");
@@ -129,7 +129,7 @@ int	main(int argc, char **args)
 		b = NULL;
 	select_sort(&stack_a, tb.strategy, dorder, b);
 	if (tb.is_bench == 1)
-		benchmark(tb.strategy, dorder, b);
+		benchmark(tb.strategy, stack_len(&stack_a), dorder, b);
 	ft_lstclear(&stack_a);
 	return (0);
 }

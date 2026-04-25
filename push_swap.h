@@ -85,7 +85,6 @@ void	push_b_to_a(t_stack **stack_a, t_stack **stack_b, t_bench *b);
 void	selection_sort(t_stack **stack_a, t_bench *b);
 void	k_sort(t_stack **stack_a, t_bench *b);
 void	radix_sort(t_stack **stack_a, t_bench *b);
-int		handle_small_sort(int len, t_stack **stack_a, t_bench *b);
 
 // parse_utils.c
 void	*ft_calloc(size_t nmemb, size_t size);
